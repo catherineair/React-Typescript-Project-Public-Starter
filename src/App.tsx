@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { AddPizzaForm } from './components/AddPizzaForm';
 import './App.css';
 
 
-function App() {
+
+
+const App: FC = () => 
+{
   return (
     <div className="App">
-      New App!
+          <div className="wrap">
+            <span className='heading'>Pizza</span>
+            <AddPizzaForm />
     </div>
+    </div>
+
   );
 }
 
