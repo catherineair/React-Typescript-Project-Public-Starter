@@ -1,5 +1,12 @@
 import React, {FC, useState, FormEvent, ChangeEvent} from "react";
+import Pizza from "../models/Pizza";
 import './styles.css';
+
+interface AddPizzaFormProps 
+{
+
+    addPizza: (newPizza: Pizza) => void;
+}
 
 const initState =
 {
@@ -8,7 +15,7 @@ const initState =
     img: '',
 }
 
-export const AddPizzaForm: FC = () =>
+export const AddPizzaForm: FC<AddPizzaFormProps> = ({addPizza}) =>
 {
 
     const [newPizza, setNewPizza] = useState<{title: string, price: string, img: string}>(initState);
@@ -23,7 +30,14 @@ export const AddPizzaForm: FC = () =>
     const handleSumbit = (e: FormEvent<HTMLElement>) =>
     {
         e.preventDefault();
-        console.log('handle change >> ', e.target);
+
+        const {title, price, img} = newPizza;
+        if (title && price && img)
+        {
+            addPizza({title, img, price: Number(price), id: Date.now()})
+        }
+
+        setNewPizza(initState);
     }
 
 
