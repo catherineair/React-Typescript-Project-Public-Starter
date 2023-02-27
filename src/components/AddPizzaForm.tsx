@@ -36,7 +36,7 @@ const initState =
         if(title && price && img)
         {
             addPizza({title, img, price: Number(price), id: Date.now()})
-
+            setNewPizza(initState);
         }
     }
 
