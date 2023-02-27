@@ -1,38 +1,28 @@
-import React, { FC, useState } from 'react';
-import { AddPizzaForm } from './components/AddPizzaForm';
+import React, {FC, useState} from "react";
+import AddPizzaForm from './components/AddPizzaForm';
 import Pizza from './models/Pizza';
 import './App.css';
-import DisplayPizzas from './components/DisplayPizzas';
 
-
-
-
-
-const App: FC = () => 
+const App: FC = () =>
 {
-
-  const [pizzaList, setPizzaList] = useState<Pizza[]>([]);
+  const [PizzasList, setPizzasList] = useState<Pizza[]>([]);
 
   const addPizza = (newPizza: Pizza) =>
-{
-  setPizzaList([...pizzaList, newPizza]);
-}
+  {
+    setPizzasList([...PizzasList, newPizza])
+  }
 
-  return (
+
+  return(
     <div className="App">
-          <div className="wrap">
-            <span className='heading'>Pizza</span>
-            <AddPizzaForm 
-            addPizza={addPizza}
-            />
-
-            <DisplayPizzas
-              pizzaList={pizzaList}
-            />
+      <div className="wrap">
+        <span className="heading">Pizzeria</span>
+        <AddPizzaForm
+        addPizza ={addPizza}
+        />
+      </div>
     </div>
-    </div>
-
-  );
+  )
 }
 
 export default App;
